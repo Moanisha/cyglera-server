@@ -19,18 +19,12 @@ const dieticianCheck = require("./middleware/dieticianCheck");
 const trainerCheck = require("./middleware/trainerCheck");
 
 const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/adminRoutes");
 const dieticianRoutes = require("./routes/dieticianRoutes");
-const clientRoutes = require("./routes/clientRoutes");
-const trainerRoutes = require("./routes/trainerRoutes");
 
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use("/api/admin", authCheck, adminCheck, adminRoutes);
 app.use("/api/dietician", authCheck, dieticianCheck, dieticianRoutes);
-app.use("/api/trainer", authCheck, trainerCheck, trainerRoutes);
-app.use("/api/client", authCheck, clientRoutes);
 
 app.get("/", (req, res) => {
   res.send({ msg: "Welcome to App" });
